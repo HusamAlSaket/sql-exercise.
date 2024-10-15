@@ -1,0 +1,35 @@
+1-SELECT * FROM `studentss`;
+
+2-SELECT COUNT (*) AS Total_courses  FROM courses;
+
+3-SELECT s.first_name, s.last_name FROM enrollments e JOIN studentss s ON e.student_id = s.student_id JOIN courses c ON e.course_id = c.course_id WHERE c.course_name = 'Math 101';
+
+4-SELECT email FROM `instructors`;
+
+5-SELECT 
+    Courses.course_name, 
+    Courses.course_code,
+    COUNT(Enrollments.student_id) AS num_students_enrolled
+FROM 
+    Courses
+LEFT JOIN 
+    Enrollments ON Courses.course_id = Enrollments.course_id
+GROUP BY 
+    Courses.course_id;
+6- SELECT studentss.first_name, courses.course_name, enrollments.grade FROM studentss JOIN enrollments ON studentss.student_id = enrollments.student_id JOIN courses ON enrollments.course_id = courses.course_id WHERE enrollments.grade = 'A';
+
+7- SELECT courses.course_name, courses.course_code, instructors.first_name AS instructor_first_name, instructors.last_name AS instructor_last_name, courseassignments.semester, courseassignments.year FROM courses JOIN courseassignments ON courses.course_id = courseassignments.course_id JOIN instructors ON courseassignments.instructor_id = instructors.instructor_id WHERE courseassignments.semester = 'Fall' AND courseassignments.year = 2024;
+
+8-SELECT AVG(CASE 
+               WHEN grade = 'A' THEN 4
+               WHEN grade = 'B' THEN 3
+               WHEN grade = 'C' THEN 2
+               WHEN grade = 'D' THEN 1
+               WHEN grade = 'F' THEN 0
+           END) AS average_grade
+FROM enrollments e
+JOIN courses c ON e.course_id = c.course_id
+WHERE c.course_name = 'Math';
+;
+
+9-
