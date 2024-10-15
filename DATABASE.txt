@@ -32,4 +32,6 @@ JOIN courses c ON e.course_id = c.course_id
 WHERE c.course_name = 'Math';
 ;
 
-9-
+9-SELECT s.first_name, s.last_name, COUNT(e.course_id) AS course_count FROM studentss s JOIN enrollments e ON s.student_id = e.student_id JOIN courseassignments ca ON e.course_id = ca.course_id WHERE ca.semester = 'Current Semester' -- Replace with the actual current semester GROUP BY s.student_id, s.first_name, s.last_name HAVING course_count > 3;
+
+10-
